@@ -17,7 +17,7 @@ const Portfolio = () => {
         return () => {
             clearTimeout(timer);
         }
-    });
+    }, []);
 
     useEffect(() => {
         getPortfolio();
@@ -54,7 +54,6 @@ const Portfolio = () => {
             </div>
         );
     }
-
 
     return (
         <>
