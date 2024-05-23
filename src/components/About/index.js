@@ -35,18 +35,18 @@ const About = () => {
             />
           </h1>
           <p>
-            I'm a very ambitious front-end developer looking for a role in an
-            established IT company with the opportunity to work with the latest
-            technologies on challenging and diverse projects.
+          As an aspiring full-stack developer, I've cultivated a robust skill set through rigorous academic coursework, personal projects, and self-directed learning.
           </p>
           <p align="LEFT">
-            I'm confident, naturally curious, and perpetually working on
-            improving my skills one design problem at a time.
+            
+Hey folks! So, as a full-stack developer, I've been keeping myself busy with a wide range of tech goodies. On the frontend side of things, I've been crafting sleek and responsive user interfaces using modern frameworks like React.js or Vue.js. Making sure everything looks great and works smoothly across different devices and browsers is my bread and butter.
+
+But I don't stop there. On the backend, I've been cooking up some serious code magic with languages like  Python, and frameworks like  Django or flask. Building robust APIs, handling data storage and retrieval, DevOps and making sure everything runs efficiently – that's where I shine.
+
+And let's not forget about the database layer. I've been cozying up to databases like PostgreSQL, MongoDB, or maybe even dabbling in some SQL or NoSQL action,information technology specialist, Networking and depending on the project's
           </p>
           <p>
-            If I need to define myself in one sentence, it would be a family
-            person, father of a beautiful daughter, a sports fanatic,
-            photography enthusiast, and tech-obsessed!
+          So yeah, that's me – a full-stack developer with a passion for crafting awesome software and making an impact. Let's build something amazing together!
           </p>
         </div>
 
