@@ -5,9 +5,11 @@ import "./index.scss";
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-const Portfolio = () => { 
+const Portfolio = () => {
     const [letterClass, setLetterClass] = useState('text-animate');
     const [portfolio, setPortfolio] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -20,13 +22,19 @@ const Portfolio = () => {
     }, []);
 
     useEffect(() => {
-        getPortfolio();
-    }, []);
+        const fetchPortfolio = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'portfolio'));
+                setPortfolio(querySnapshot.docs.map((doc) => doc.data()));
+                setLoading(false);
+            } catch (error) {
+                setError(error);
+                setLoading(false);
+            }
+        };
 
-    const getPortfolio = async () => {
-        const querySnapshot = await getDocs(collection(db, 'portfolio'));
-        setPortfolio(querySnapshot.docs.map((doc) => doc.data()));
-    }
+        fetchPortfolio();
+    }, []);
 
     const renderPortfolio = (portfolio) => {
         return (
@@ -55,21 +63,22 @@ const Portfolio = () => {
         );
     }
 
+    if (loading) return <Loader type="pacman" />;
+    if (error) return <div>Error: {error.message}</div>;
+
     return (
-        <>
-            <div className="container portfolio-page">
-                <h1 className="page-title">
-                    <AnimatedLetters
-                        letterClass={letterClass}
-                        strArray={"Portfolio".split("")}
-                        idx={15}
-                    />
-                </h1>
-                <div>{renderPortfolio(portfolio)}</div>
-            </div>
-            <Loader type="pacman" />
-        </>
+        <div className="container portfolio-page">
+            <h1 className="page-title">
+                <AnimatedLetters
+                    letterClass={letterClass}
+                    strArray={"Portfolio".split("")}
+                    idx={15}
+                />
+            </h1>
+            <div>{renderPortfolio(portfolio)}</div>
+        </div>
     );
 }
 
 export default Portfolio;
+
